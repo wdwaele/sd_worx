@@ -10,7 +10,7 @@ nodes = []
 edges = []
 
 async def fetch_graph_data():
-    uri = "ws://localhost:8000/ws/graph"
+    uri = "ws://127.0.0.1:8000/ws/graph"
     async with websockets.connect(uri) as websocket:
         while True:
             message = await websocket.recv()
