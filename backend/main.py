@@ -27,9 +27,14 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             data = await websocket.receive_text()
             # Process data and send updates
+            # Simuleer een voorbeeld payload voor testdoeleinden
+            example_payload = {
+                "nodes": [{"id": "1", "label": "Node 1", "group": "A", "details": "Details about Node 1"}],
+                "edges": [{"source": "1", "target": "2", "relationship": "connected to"}]
+            }
             await websocket.send_json({
                 "type": "NODE_ADDED",
-                "payload": {}
+                "payload": example_payload
             })
     except Exception as e:
         await websocket.send_json({"type": "ERROR", "payload": str(e)})
